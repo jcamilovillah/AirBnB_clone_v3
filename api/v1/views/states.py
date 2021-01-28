@@ -48,7 +48,7 @@ def create_state(state_id=None):
     if "name" not in httpbody:
         abort(400, description="Missing name")
 
-    state = State(**data)
+    state = State(**httpbody)
     state.save()
     return make_response(jsonify(state.to_dict()), 201)
 
