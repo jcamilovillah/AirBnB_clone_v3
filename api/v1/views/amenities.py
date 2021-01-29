@@ -6,7 +6,7 @@ from flask import jsonify, request, make_response, abort
 from api.v1.views import app_views
 
 
-@app_views.route('/amenities', method=['GET'], strict_slashes=False)
+@app_views.route('/amenities', methods=['GET'], strict_slashes=False)
 def all_amenities():
     """Retrieves all amenities"""
     amenities = storage.all(Amenity).values()
@@ -16,7 +16,7 @@ def all_amenities():
     return jsonify(list_amenities)
 
 
-@app_views.route('/amenities/<amenity_id>', method=['GET'],
+@app_views.route('/amenities/<amenity_id>', methods=['GET'],
                  strict_slashes=False)
 def one_amenity(amenity_id=None):
     """Retrieve an amenity"""
