@@ -57,7 +57,7 @@ def post_amenity():
                      strict_slashes=False)
     def put_amenities(amenity_id=None):
         """Update an amenity"""
-        dict_json 0 request.get_json()
+        dict_json = request.get_json()
         if not dict_json:
             abort(400, description="Not a JSON")
         amenity = storage.get('Amenity', amenity_id)
