@@ -53,8 +53,8 @@ def post_amenity():
     storage.save()
     return make_response(jsonify(new_amenity.to_dict()), 201)
 
-    @app_views.route('/amenities/<amenity_id>', methods=['PUT'],
-                     strict_slashes=False)
+@app_views.route('/amenities/<amenity_id>', methods=['PUT'],
+                 strict_slashes=False)
     def put_amenities(amenity_id=None):
         """Update an amenity"""
         dict_json = request.get_json()
