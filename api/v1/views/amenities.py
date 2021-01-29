@@ -53,18 +53,19 @@ def post_amenity():
     storage.save()
     return make_response(jsonify(new_amenity.to_dict()), 201)
 
+
 @app_views.route('/amenities/<amenity_id>', methods=['PUT'],
                  strict_slashes=False)
-    def put_amenities(amenity_id=None):
-        """Update an amenity"""
-        dict_json = request.get_json()
-        if not dict_json:
-            abort(400, description="Not a JSON")
-        amenity = storage.get('Amenity', amenity_id)
-        if amenity:
-            for key, value in dict_json.items():
-                setattr(amenity, key, value)
-            storage.save()
-            return make_response(jsonify(amenity.to_dict()), 200)
-        else:
-            return abort(404)
+def put_amenities(amenity_id=None):
+    """Update an amenity"""
+    dict_json = request.get_json()
+    if not dict_json:
+        abort(400, description="Not a JSON")
+    amenity = storage.get('Amenity', amenity_id)
+    if amenity:
+        for key, value in dict_json.items():
+            setattr(amenity, key, value)
+        storage.save()
+        return make_response(jsonify(amenity.to_dict()), 200)
+    else:
+        return abort(404)
